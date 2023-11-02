@@ -1,0 +1,115 @@
+Pacotes
+
+```{r}
+library(rvest)
+library(tidyverse)
+library(stringr)
+library(httr)
+```
+
+Urls & headers
+
+```{r}
+urlhealth <- "https://edition.cnn.com/health"
+urlmain <- "https://edition.cnn.com"
+
+headers <- c(
+  "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+)
+```
+
+Saude
+
+```{r}
+# fazer a consulta ao link
+response <- GET(urlhealth, add_headers(headers), decode = FALSE)
+html <- read_html(content(response, "text", encoding = "UTF-8"))
+
+# achando os links das notícias de saúde
+
+links <- html %>%
+  html_elements("a")%>%
+  html_attr("href")
+
+indices <- links %>%
+  str_detect("^\\/\\d+") # procurando os links que começam com /numeros
+
+links <- links[indices]
+links <- unique(links[!is.na(links)])
+
+saude = c()
+for(link in links){
+  newurl <- paste0(urlmain,link)
+  responsenew <- GET(newurl, add_headers(headers), decode = FALSE)
+  htmlnew <- read_html(content(responsenew, "text", encoding = "UTF-8"))
+  titulo <- htmlnew %>%
+    html_element(xpath = '//*[@id="maincontent"]') %>%
+    html_text2()
+  autor <- htmlnew %>%
+    html_element(".byline__name") %>%
+    html_text2()
+  autor <- ifelse(is.na(autor),"Não identificado",autor)
+  categoria <- str_extract(link, "/\\d+/\\d+/\\d+/(\\w+)")
+  categoria <- str_remove(categoria,"/\\d+/\\d+/\\d+/" )
+  saude <- c(saude,titulo,autor,categoria)
+}
+
+matriz_saude <- matrix(saude, ncol = 3, byrow = TRUE)
+df_saude <- data.frame(matriz_saude)
+colnames(df_saude) <- c("Titulo","Autor","Categoria")
+df_saude <- df_saude[df_saude$Categoria == "health",]
+```
+
+Todas Notícias
+
+```{r}
+# primeiro pegar os links de cada categoria
+responsemain <- GET(urlmain, add_headers(headers), decode = FALSE)
+htmlmain <- read_html(content(responsemain, "text", encoding = "UTF-8"))
+
+categoriaslinks <- htmlmain %>%
+  html_element(xpath = '//*[@id="pageHeader"]/div/div/div[2]/div/nav[2]/ul')%>%
+  html_elements(".subnav__section") %>%
+  html_element("a")%>%
+  html_attr("href")
+  
+
+# agora como temos todas as categorias basta fazer oq fizemos no de saúde só que para cada uma
+noticias = c()
+for(ctg in categoriaslinks){
+  responsectg <- GET(ctg, add_headers(headers), decode = FALSE)
+  htmlctg <- read_html(content(responsectg, "text", encoding = "UTF-8"))
+  
+  linksnoticias <- htmlctg %>%
+  html_elements("a")%>%
+  html_attr("href")
+
+  indicesnoticias <- linksnoticias %>%
+  str_detect("^\\/\\d+")
+  
+  linksnoticias <- linksnoticias[indicesnoticias]
+  linksnoticias <- unique(linksnoticias[!is.na(linksnoticias)])
+  
+  for(link in linksnoticias){
+    newurl <- paste0(urlmain,link)
+    responsenew <- GET(newurl, add_headers(headers), decode = FALSE)
+    htmlnew <- read_html(content(responsenew, "text", encoding = "UTF-8"))
+    titulo <- htmlnew %>%
+      html_element(xpath = '//*[@id="maincontent"]') %>%
+      html_text2()
+    autor <- htmlnew %>%
+      html_element(".byline__name") %>%
+      html_text2()
+    autor <- ifelse(is.na(autor),"Não identificado",autor) #existe uma tratativa melhor para esses autores que deram NA
+    categoria <- str_extract(link, "/\\d+/\\d+/\\d+/(\\w+)")
+    categoria <- str_remove(categoria,"/\\d+/\\d+/\\d+/" )
+    noticias <- c(noticias,titulo,autor,categoria)
+  }
+  
+}
+
+matriz_noticias <- matrix(noticias, ncol = 3, byrow = TRUE)
+df_noticias <- data.frame(matriz_noticias)
+colnames(df_noticias) <- c("Titulo","Autor","Categoria")
+```
+
