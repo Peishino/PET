@@ -111,5 +111,5 @@ for(ctg in categoriaslinks){
 matriz_noticias <- matrix(noticias, ncol = 3, byrow = TRUE)
 df_noticias <- data.frame(matriz_noticias)
 colnames(df_noticias) <- c("Titulo","Autor","Categoria")
+df_noticias <- unique(df_noticias)
 ```
-
