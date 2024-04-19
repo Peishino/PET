@@ -1,0 +1,138 @@
+---
+title: "Curso de Webscraping no R"
+subtitle: "Site sem API? Não Entre em Pânico! Webscraping é sua arma secreta para desbloquear todos os dados!"
+author: "Bruno Melo, Gabriel Moreira e Victor Borin"
+format: 
+  revealjs:
+    theme: serif
+    footer: "Pet estatística"
+---
+
+## Ambiente e pacotes
+:::: {.columns}
+
+::: {.column width="50%"}
+<br>
+![](mural2.png)
+:::
+
+::: {.column width="50%"}
+<br>
+<br>
+<br>
+``` r
+install.packages("tidyverse")
+install.packages("rvest")
+install.packages("stringr")
+library(tidyverse)
+library(rvest)
+library(stringr)
+```
+
+:::
+
+::::
+# Estrutura de sites
+
+## Tags HTML
+
+- < a > link.
+
+- < h1 > < h2 > < h3 >... Cabeçalhos.
+
+- < div > elemento de divisão da página.
+
+- < p > elemento de parágrafo.
+
+- < ul > tag para uma lista não ordenada.
+
+- < il > tag para os itens da lista.
+
+- < span > conteiner genérico.
+
+## Atributos CSS
+
+- .classe : vários
+
+- #id : único
+
+::: aside
+Inspecionar página.
+:::
+
+# Funções & pipes
+
+## Algumas funções do rvest:
+
+
+- read_html()
+- html_elements()
+- html_element()
+- html_attr()
+- html_text2()
+
+::: aside
+?Função <br>
+help("Função")
+:::
+
+## Estrutura básica de uma raspagem:
+
+```r
+url <- "link"
+
+html <- read_html(url)
+
+variavel <- html %>%
+  html_elements("tag .class #id") %>%
+  html_text2()
+```
+
+# Prática!
+
+Vamos praticar esses conceitos no R e ver como faríamos para raspar os 250 melhores filmes classificados pelo site do IMDB!
+
+
+# Tratamento de Strings
+
+#
+:::: {.columns}
+
+::: {.column width="60%"}
+## Funções recorrentes do stringr:
+
+- str_replace()
+- str_remove()
+:::
+
+::: {.column width="40%"}
+
+## Expressão regular
+- ^ = inicio da linha
+- d = um digito
+- d+ = sequência de digitos
+- . = ponto
+- s = espaço
+- s+ = sequência de espaços
+:::
+
+::::
+
+# Exercício comparação de preços
+
+Fazer webscraping de um mesmo produto de interesse em dois sites diferentes.
+
+
+# Finalização
+
+## Outros métodos de webscraping
+
+- Páginas dinâmicas
+- APIs "escondidas" 
+
+::: aside
+As opções são diversas e o limite é a sua imaginação.
+:::
+
+# Agradecemos a participação de todos!
+
