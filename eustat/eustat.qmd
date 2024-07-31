@@ -1,0 +1,120 @@
+---
+title: "Introdução ao Shiny (R)"
+format:
+  revealjs: 
+    code-block-height: 1000px
+author: Gabriel Moreira
+date: "2024-07-08"
+theme: night
+---
+# O que é o Shiny?
+...
+
+---
+
+<br>
+<br>
+
+
+Shiny é um pacote R que facilita a construção de aplicativos web interativos diretamente no R.
+
+<br>
+Alguns pontos positivos:
+
+- Facilidade de uso
+- Integração direta com o R
+- Compartilhamento de análises de dados
+- Visualizações interativas
+
+
+# Por que usar o Shiny?
+
+---
+
+<br>
+
+<ol>
+    <li>É gratuito.</li>
+    <li>Permite criar dashboards e relatórios interativos sem a necessidade de conhecimento avançado de desenvolvimento web.</li>
+    <li>É de graça.</li>
+    <li>É fácilmente compartilhável.</li>
+    <li>Integração direta com R, permitindo o uso de todas as bibliotecas e funcionalidades do R.</li>
+    <li>Não tem que pagar.</li>
+</ol>
+
+
+# Componentes principais
+
+---
+
+<br>
+<br>
+<br>
+<br>
+
+UI: Responsável pelo layout e aparência do aplicativo.
+
+<br>
+
+Server: Responsável pela lógica e funcionalidades do aplicativo.
+
+# Exemplo de aplicativo
+
+---
+
+```r
+library(shiny)
+ui <- fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:", min = 1, max = 1000, value = 500)
+    ),
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    hist(rnorm(input$obs))
+  })
+}
+shinyApp(ui = ui, server = server)
+```
+
+# Alguns elementos da interface do usuário:
+
+---
+
+- **Inputs**: Tipos comuns de entradas (ex: textInput, sliderInput, selectInput).
+
+- **Outputs**: Tipos comuns de saídas (ex: plotOutput, tableOutput, textOutput).
+
+- **Layouts**: Layouts básicos com fluidPage, sidebarLayout, navbarPage, etc.
+
+# Exemplo de textInput
+
+---
+
+```r
+library(shiny)
+ui <- fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      textInput("name", "Qual é seu nome?")
+    ),
+    mainPanel(
+      textOutput("greeting")
+    )
+  )
+)
+server <- function(input, output) {
+  output$greeting <- renderText({
+    paste("Hello,", input$name)
+  })
+}
+shinyApp(ui = ui, server = server)
+```
+
