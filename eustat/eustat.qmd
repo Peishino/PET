@@ -10,53 +10,12 @@ theme: night
 # O que é o Shiny?
 ...
 
----
-
-<br>
-<br>
-
-
-Shiny é um pacote R que facilita a construção de aplicativos web interativos diretamente no R.
-
-<br>
-Alguns pontos positivos:
-
-- Facilidade de uso
-- Integração direta com o R
-- Compartilhamento de análises de dados
-- Visualizações interativas
-
 
 # Por que usar o Shiny?
 
----
-
-<br>
-
-<ol>
-    <li>É gratuito.</li>
-    <li>Permite criar dashboards e relatórios interativos sem a necessidade de conhecimento avançado de desenvolvimento web.</li>
-    <li>É de graça.</li>
-    <li>É fácilmente compartilhável.</li>
-    <li>Integração direta com R, permitindo o uso de todas as bibliotecas e funcionalidades do R.</li>
-    <li>Não tem que pagar.</li>
-</ol>
 
 
 # Componentes principais
-
----
-
-<br>
-<br>
-<br>
-<br>
-
-UI: Responsável pelo layout e aparência do aplicativo.
-
-<br>
-
-Server: Responsável pela lógica e funcionalidades do aplicativo.
 
 # Exemplo de aplicativo
 
