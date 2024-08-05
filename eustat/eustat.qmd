@@ -108,7 +108,11 @@ ui <- fluidPage(
     )
   )
 )
+```
 
+---
+
+```r
 server <- function(input, output) {
   filteredData <- reactive({
     penguins[penguins$species == input$species, ]
@@ -130,8 +134,6 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
-
-
 ```
 
 # Exemplo de valueBox com shinydashboard
