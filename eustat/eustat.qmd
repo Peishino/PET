@@ -3,6 +3,7 @@ title: "Introdução ao Shiny (R)"
 format:
   revealjs: 
     code-block-height: 1000px
+    chalkboard: true
 author: Gabriel Moreira
 date: "2024-07-08"
 theme: night
@@ -16,6 +17,17 @@ theme: night
 
 
 # Componentes principais
+
+# Alguns elementos da interface do usuário:
+
+---
+
+- **Inputs**: Tipos comuns de entradas (ex: textInput, sliderInput, selectInput).
+
+- **Outputs**: Tipos comuns de saídas (ex: plotOutput, tableOutput, textOutput).
+
+- **Layouts**: Layouts básicos com fluidPage, sidebarLayout, navbarPage, etc.
+
 
 # Exemplo de aplicativo
 
@@ -42,17 +54,8 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-# Alguns elementos da interface do usuário:
 
----
-
-- **Inputs**: Tipos comuns de entradas (ex: textInput, sliderInput, selectInput).
-
-- **Outputs**: Tipos comuns de saídas (ex: plotOutput, tableOutput, textOutput).
-
-- **Layouts**: Layouts básicos com fluidPage, sidebarLayout, navbarPage, etc.
-
-# Exemplo de textInput
+# Exemplo de alguns inputs e reatividade básica
 
 ---
 
@@ -77,3 +80,87 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
+# Exemplo de um aplicativo com reatividade
+
+---
+
+```r
+library(shiny)
+library(palmerpenguins)
+
+ui <- fluidPage(
+  titlePanel("Gráfico de Dispersão dos Pinguins"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("species", "Selecione a Espécie:",
+        choices = unique(penguins$species)
+      ),
+      selectInput("xvar", "Selecione a Variável do Eixo X:",
+        choices = names(penguins)[3:6]
+      ),
+      selectInput("yvar", "Selecione a Variável do Eixo Y:",
+        choices = names(penguins)[3:6],
+        selected = names(penguins)[4]
+      )
+    ),
+    mainPanel(
+      plotOutput("scatterPlot")
+    )
+  )
+)
+
+server <- function(input, output) {
+  filteredData <- reactive({
+    penguins[penguins$species == input$species, ]
+  })
+
+  output$scatterPlot <- renderPlot({
+    data <- filteredData()
+    x <- data[[input$xvar]]
+    y <- data[[input$yvar]]
+
+    plot(x, y,
+      xlab = input$xvar,
+      ylab = input$yvar,
+      main = paste("Gráfico de Dispersão de", input$species),
+      pch = 19,
+      col = "blue"
+    )
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+
+```
+
+# Exemplo de valueBox com shinydashboard
+---
+
+```r
+library(shiny)
+library(shinydashboard)
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Painel Básico"),
+  dashboardSidebar(),
+  dashboardBody(
+    fluidRow(
+      valueBoxOutput("valuebox1"),
+      valueBoxOutput("valuebox2")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$valuebox1 <- renderValueBox({
+    valueBox(42, "Sentido da Vida")
+  })
+
+  output$valuebox2 <- renderValueBox({
+    valueBox(100, "Algum outro valor")
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
