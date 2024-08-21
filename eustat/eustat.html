@@ -8,7 +8,7 @@
 <link href="eustat_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="eustat_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="eustat_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.43">
+  <meta name="generator" content="quarto-1.5.53">
 
   <meta name="author" content="Gabriel Moreira">
   <meta name="dcterms.date" content="2024-07-08">
@@ -515,30 +515,31 @@ Gabriel Moreira
 <span id="cb3-20"><a href=""></a>      <span class="fu">plotOutput</span>(<span class="st">"scatterPlot"</span>)</span>
 <span id="cb3-21"><a href=""></a>    )</span>
 <span id="cb3-22"><a href=""></a>  )</span>
-<span id="cb3-23"><a href=""></a>)</span>
-<span id="cb3-24"><a href=""></a></span>
-<span id="cb3-25"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb3-26"><a href=""></a>  filteredData <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb3-27"><a href=""></a>    penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> input<span class="sc">$</span>species, ]</span>
-<span id="cb3-28"><a href=""></a>  })</span>
-<span id="cb3-29"><a href=""></a></span>
-<span id="cb3-30"><a href=""></a>  output<span class="sc">$</span>scatterPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb3-31"><a href=""></a>    data <span class="ot">&lt;-</span> <span class="fu">filteredData</span>()</span>
-<span id="cb3-32"><a href=""></a>    x <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>xvar]]</span>
-<span id="cb3-33"><a href=""></a>    y <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>yvar]]</span>
-<span id="cb3-34"><a href=""></a></span>
-<span id="cb3-35"><a href=""></a>    <span class="fu">plot</span>(x, y,</span>
-<span id="cb3-36"><a href=""></a>      <span class="at">xlab =</span> input<span class="sc">$</span>xvar,</span>
-<span id="cb3-37"><a href=""></a>      <span class="at">ylab =</span> input<span class="sc">$</span>yvar,</span>
-<span id="cb3-38"><a href=""></a>      <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Gráfico de Dispersão de"</span>, input<span class="sc">$</span>species),</span>
-<span id="cb3-39"><a href=""></a>      <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb3-40"><a href=""></a>      <span class="at">col =</span> <span class="st">"blue"</span></span>
-<span id="cb3-41"><a href=""></a>    )</span>
-<span id="cb3-42"><a href=""></a>  })</span>
-<span id="cb3-43"><a href=""></a>}</span>
-<span id="cb3-44"><a href=""></a></span>
-<span id="cb3-45"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span>
-<span id="cb3-46"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-23"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb4-2"><a href=""></a>  filteredData <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb4-3"><a href=""></a>    penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> input<span class="sc">$</span>species, ]</span>
+<span id="cb4-4"><a href=""></a>  })</span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a>  output<span class="sc">$</span>scatterPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb4-7"><a href=""></a>    data <span class="ot">&lt;-</span> <span class="fu">filteredData</span>()</span>
+<span id="cb4-8"><a href=""></a>    x <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>xvar]]</span>
+<span id="cb4-9"><a href=""></a>    y <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>yvar]]</span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a>    <span class="fu">plot</span>(x, y,</span>
+<span id="cb4-12"><a href=""></a>      <span class="at">xlab =</span> input<span class="sc">$</span>xvar,</span>
+<span id="cb4-13"><a href=""></a>      <span class="at">ylab =</span> input<span class="sc">$</span>yvar,</span>
+<span id="cb4-14"><a href=""></a>      <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Gráfico de Dispersão de"</span>, input<span class="sc">$</span>species),</span>
+<span id="cb4-15"><a href=""></a>      <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb4-16"><a href=""></a>      <span class="at">col =</span> <span class="st">"blue"</span></span>
+<span id="cb4-17"><a href=""></a>    )</span>
+<span id="cb4-18"><a href=""></a>  })</span>
+<span id="cb4-19"><a href=""></a>}</span>
+<span id="cb4-20"><a href=""></a></span>
+<span id="cb4-21"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="exemplo-de-valuebox-com-shinydashboard" class="title-slide slide level1 center">
@@ -547,31 +548,31 @@ Gabriel Moreira
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb4-2"><a href=""></a><span class="fu">library</span>(shinydashboard)</span>
-<span id="cb4-3"><a href=""></a></span>
-<span id="cb4-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(</span>
-<span id="cb4-5"><a href=""></a>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">"Painel Básico"</span>),</span>
-<span id="cb4-6"><a href=""></a>  <span class="fu">dashboardSidebar</span>(),</span>
-<span id="cb4-7"><a href=""></a>  <span class="fu">dashboardBody</span>(</span>
-<span id="cb4-8"><a href=""></a>    <span class="fu">fluidRow</span>(</span>
-<span id="cb4-9"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox1"</span>),</span>
-<span id="cb4-10"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox2"</span>)</span>
-<span id="cb4-11"><a href=""></a>    )</span>
-<span id="cb4-12"><a href=""></a>  )</span>
-<span id="cb4-13"><a href=""></a>)</span>
-<span id="cb4-14"><a href=""></a></span>
-<span id="cb4-15"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb4-16"><a href=""></a>  output<span class="sc">$</span>valuebox1 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
-<span id="cb4-17"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">42</span>, <span class="st">"Sentido da Vida"</span>)</span>
-<span id="cb4-18"><a href=""></a>  })</span>
-<span id="cb4-19"><a href=""></a></span>
-<span id="cb4-20"><a href=""></a>  output<span class="sc">$</span>valuebox2 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
-<span id="cb4-21"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">100</span>, <span class="st">"Algum outro valor"</span>)</span>
-<span id="cb4-22"><a href=""></a>  })</span>
-<span id="cb4-23"><a href=""></a>}</span>
-<span id="cb4-24"><a href=""></a></span>
-<span id="cb4-25"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb5-2"><a href=""></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(</span>
+<span id="cb5-5"><a href=""></a>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">"Painel Básico"</span>),</span>
+<span id="cb5-6"><a href=""></a>  <span class="fu">dashboardSidebar</span>(),</span>
+<span id="cb5-7"><a href=""></a>  <span class="fu">dashboardBody</span>(</span>
+<span id="cb5-8"><a href=""></a>    <span class="fu">fluidRow</span>(</span>
+<span id="cb5-9"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox1"</span>),</span>
+<span id="cb5-10"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox2"</span>)</span>
+<span id="cb5-11"><a href=""></a>    )</span>
+<span id="cb5-12"><a href=""></a>  )</span>
+<span id="cb5-13"><a href=""></a>)</span>
+<span id="cb5-14"><a href=""></a></span>
+<span id="cb5-15"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb5-16"><a href=""></a>  output<span class="sc">$</span>valuebox1 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
+<span id="cb5-17"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">42</span>, <span class="st">"Sentido da Vida"</span>)</span>
+<span id="cb5-18"><a href=""></a>  })</span>
+<span id="cb5-19"><a href=""></a></span>
+<span id="cb5-20"><a href=""></a>  output<span class="sc">$</span>valuebox2 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
+<span id="cb5-21"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">100</span>, <span class="st">"Algum outro valor"</span>)</span>
+<span id="cb5-22"><a href=""></a>  })</span>
+<span id="cb5-23"><a href=""></a>}</span>
+<span id="cb5-24"><a href=""></a></span>
+<span id="cb5-25"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
