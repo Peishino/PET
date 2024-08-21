@@ -1,7 +1,7 @@
 ---
-title: "Curso de Webscraping no R"
-subtitle: "Site sem API? Não Entre em Pânico! Webscraping é sua arma secreta para desbloquear todos os dados!"
-author: "Bruno Melo, Gabriel Moreira e Victor Borin"
+title: "Mapa do tesouro"
+subtitle: "Um curso de web scraping e criação de mapas"
+author: "Pet Estatística"
 format: 
   revealjs:
     theme: serif
@@ -50,6 +50,8 @@ library(stringr)
 
 - < span > conteiner genérico.
 
+- < table > tabela.
+
 ## Atributos CSS
 
 - .classe : vários
@@ -90,7 +92,7 @@ variavel <- html %>%
 
 # Prática!
 
-Vamos praticar esses conceitos no R e ver como faríamos para raspar os 250 melhores filmes classificados pelo site do IMDB!
+Vamos praticar esses conceitos no R e ver como faríamos para raspar (exemplo do Borin)
 
 
 # Tratamento de Strings
@@ -118,9 +120,10 @@ Vamos praticar esses conceitos no R e ver como faríamos para raspar os 250 melh
 
 ::::
 
-# Exercício comparação de preços
+# Exercício proposto : Raspar os dados do wikipedia
 
-Fazer webscraping de um mesmo produto de interesse em dois sites diferentes.
+pegar link com pedro
+
 
 
 # Finalização
