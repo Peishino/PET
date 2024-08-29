@@ -34,6 +34,12 @@ library(stringr)
 ::::
 # Estrutura de sites
 
+<br>
+
+::: aside
+Inspecionar página.
+:::
+
 ## Tags HTML
 
 - < a > link.
@@ -58,11 +64,14 @@ library(stringr)
 
 - #id : único
 
-::: aside
-Inspecionar página.
-:::
+# Raspagem de dados 
 
-# Funções & pipes
+## Passo a passo de uma raspagem
+
+1. Identificar a URL
+2. Ler o HTML
+3. Identificar o elemento
+4. Extrair o texto ou atributo
 
 ## Algumas funções do rvest:
 
@@ -70,8 +79,8 @@ Inspecionar página.
 - read_html()
 - html_elements()
 - html_element()
-- html_attr()
 - html_text2()
+- html_attr()
 
 ::: aside
 ?Função <br>
@@ -90,39 +99,39 @@ variavel <- html %>%
   html_text2()
 ```
 
+
+
 # Prática!
 
-Vamos praticar esses conceitos no R e ver como faríamos para raspar (exemplo do Borin)
-
+Vamos praticar esses conceitos no R e ver como faríamos para raspar os 20 melhores filmes até 2020 do NSC.
 
 # Tratamento de Strings
 
 #
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="40%"}
 ## Funções recorrentes do stringr:
 
 - str_replace()
 - str_remove()
 :::
 
-::: {.column width="40%"}
+::: {.column width="60%"}
 
 ## Expressão regular
 - ^ = inicio da linha
-- d = um digito
-- d+ = sequência de digitos
-- . = ponto
-- s = espaço
-- s+ = sequência de espaços
+- \\\\d = um digito
+- \+ = 1 ou mais vezes
+- \\\\s = espaço
+- [A-Za-z] = letras maiúsculas e minúsculas
 :::
 
 ::::
 
 # Exercício proposto : Raspar os dados do wikipedia
 
-pegar link com pedro
+Lista de unidades federativas do Brasil por alfabetização
 
 
 

@@ -8,7 +8,7 @@
 <link href="CursoWebscraping_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="CursoWebscraping_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="CursoWebscraping_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.43">
+  <meta name="generator" content="quarto-1.5.53">
 
   <meta name="author" content="Pet Estatística">
   <title>Mapa do tesouro</title>
@@ -416,14 +416,16 @@ Pet Estatística
 <span id="cb1-4"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-5"><a href=""></a><span class="fu">library</span>(rvest)</span>
 <span id="cb1-6"><a href=""></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section>
 <section id="estrutura-de-sites" class="title-slide slide level1 center">
 <h1>Estrutura de sites</h1>
+<p><br></p>
 
-</section>
+<aside><div>
+<p>Inspecionar página.</p>
+</div></aside></section>
 <section id="tags-html" class="slide level2">
 <h2>Tags HTML</h2>
 <ul>
@@ -443,14 +445,20 @@ Pet Estatística
 <li><p>.classe : vários</p></li>
 <li><p>#id : único</p></li>
 </ul>
-
-<aside><div>
-<p>Inspecionar página.</p>
-</div></aside></section></section>
+</section></section>
 <section>
-<section id="funções-pipes" class="title-slide slide level1 center">
-<h1>Funções &amp; pipes</h1>
+<section id="raspagem-de-dados" class="title-slide slide level1 center">
+<h1>Raspagem de dados</h1>
 
+</section>
+<section id="passo-a-passo-de-uma-raspagem" class="slide level2">
+<h2>Passo a passo de uma raspagem</h2>
+<ol type="1">
+<li>Identificar a URL</li>
+<li>Ler o HTML</li>
+<li>Identificar o elemento</li>
+<li>Extrair o texto ou atributo</li>
+</ol>
 </section>
 <section id="algumas-funções-do-rvest" class="slide level2">
 <h2>Algumas funções do rvest:</h2>
@@ -458,8 +466,8 @@ Pet Estatística
 <li>read_html()</li>
 <li>html_elements()</li>
 <li>html_element()</li>
-<li>html_attr()</li>
 <li>html_text2()</li>
+<li>html_attr()</li>
 </ul>
 
 <aside><div>
@@ -477,7 +485,7 @@ Pet Estatística
 </section></section>
 <section id="prática" class="title-slide slide level1 center">
 <h1>Prática!</h1>
-<p>Vamos praticar esses conceitos no R e ver como faríamos para raspar (exemplo do Borin)</p>
+<p>Vamos praticar esses conceitos no R e ver como faríamos para raspar os 20 melhores filmes até 2020 do NSC.</p>
 </section>
 
 <section id="tratamento-de-strings" class="title-slide slide level1 center">
@@ -491,7 +499,7 @@ Pet Estatística
 
 </section>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:40%;">
 <section id="funções-recorrentes-do-stringr" class="slide level2">
 <h2>Funções recorrentes do stringr:</h2>
 <ul>
@@ -499,23 +507,22 @@ Pet Estatística
 <li>str_remove()</li>
 </ul>
 </section>
-</div><div class="column" style="width:40%;">
+</div><div class="column" style="width:60%;">
 <section id="expressão-regular" class="slide level2">
 <h2>Expressão regular</h2>
 <ul>
 <li>^ = inicio da linha</li>
-<li>d = um digito</li>
-<li>d+ = sequência de digitos</li>
-<li>. = ponto</li>
-<li>s = espaço</li>
-<li>s+ = sequência de espaços</li>
+<li>\\d = um digito</li>
+<li>+ = 1 ou mais vezes</li>
+<li>\\s = espaço</li>
+<li>[A-Za-z] = letras maiúsculas e minúsculas</li>
 </ul>
 </section>
 </div>
 </div></section>
 <section id="exercício-proposto-raspar-os-dados-do-wikipedia" class="title-slide slide level1 center">
 <h1>Exercício proposto : Raspar os dados do wikipedia</h1>
-<p>pegar link com pedro</p>
+<p>Lista de unidades federativas do Brasil por alfabetização</p>
 </section>
 
 <section>
