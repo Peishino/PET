@@ -10,9 +10,9 @@
 <link href="eustat_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.53">
 
-  <meta name="author" content="Gabriel Moreira">
-  <meta name="dcterms.date" content="2024-08-08">
-  <title>Introdução ao Shiny (R)</title>
+  <meta name="author" content="Gabriel Moreira Bomfim Santos de Freitas">
+  <meta name="author" content="Patrícia Vianna da Silva">
+  <title>Dashboards com uso do pacote shiny do R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -394,59 +394,61 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introdução ao Shiny (R)</h1>
+  <h1 class="title">Dashboards com uso do pacote shiny do R</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Gabriel Moreira 
+Gabriel Moreira Bomfim Santos de Freitas 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Patrícia Vianna da Silva 
 </div>
 </div>
 </div>
 
-  <p class="date">2024-08-08</p>
 </section>
-<section id="o-que-é-o-shiny" class="title-slide slide level1 center">
-<h1>O que é o Shiny?</h1>
-<p>…</p>
-</section>
-
-<section id="por-que-usar-o-shiny" class="title-slide slide level1 center">
-<h1>Por que usar o Shiny?</h1>
+<section id="dashboards" class="title-slide slide level1 center">
+<h1>Dashboards ?</h1>
 
 </section>
 
-<section id="componentes-principais" class="title-slide slide level1 center">
-<h1>Componentes principais</h1>
+<section id="o-que-é-shiny" class="title-slide slide level1 center">
+<h1>O que é Shiny?</h1>
 
 </section>
 
 <section>
-<section id="alguns-elementos-da-interface-do-usuário" class="title-slide slide level1 center">
-<h1>Alguns elementos da interface do usuário:</h1>
+<section id="elementos-principais-do-shiny" class="title-slide slide level1 center">
+<h1>Elementos principais do Shiny</h1>
 
 </section>
 <section class="slide level2">
 
+
+<img data-src="ui_temp.png" class="r-stretch quarto-figure-center"><p class="caption">Interface do Usuário</p></section>
+<section class="slide level2">
+
+
+<img data-src="serv_temp.png" class="r-stretch quarto-figure-center"><p class="caption">Servidor</p></section>
+<section id="recursos-da-interface-do-usuário" class="slide level2">
+<h2>Recursos da interface do usuário</h2>
 <ul>
 <li><p><strong>Inputs</strong>: Tipos comuns de entradas (ex: textInput, sliderInput, selectInput).</p></li>
 <li><p><strong>Outputs</strong>: Tipos comuns de saídas (ex: plotOutput, tableOutput, textOutput).</p></li>
 <li><p><strong>Layouts</strong>: Layouts básicos com fluidPage, sidebarLayout, navbarPage, etc.</p></li>
 </ul>
-</section></section>
-<section>
-<section id="exemplo-de-aplicativo" class="title-slide slide level1 center">
-<h1>Exemplo de aplicativo</h1>
-
 </section>
 <section class="slide level2">
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
 <span id="cb1-2"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-3"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny!"</span>),</span>
+<span id="cb1-3"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Histograma de uma distribuição normal"</span>),</span>
 <span id="cb1-4"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
 <span id="cb1-5"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb1-6"><a href=""></a>      <span class="fu">sliderInput</span>(<span class="st">"obs"</span>, <span class="st">"Number of observations:"</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1000</span>, <span class="at">value =</span> <span class="dv">500</span>)</span>
+<span id="cb1-6"><a href=""></a>      <span class="fu">sliderInput</span>(<span class="st">"obs"</span>, <span class="st">"Número de observações:"</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1000</span>, <span class="at">value =</span> <span class="dv">500</span>)</span>
 <span id="cb1-7"><a href=""></a>    ),</span>
 <span id="cb1-8"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
 <span id="cb1-9"><a href=""></a>      <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
@@ -459,126 +461,44 @@ Gabriel Moreira
 <span id="cb1-16"><a href=""></a>  })</span>
 <span id="cb1-17"><a href=""></a>}</span>
 <span id="cb1-18"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
-<section>
-<section id="exemplo-de-alguns-inputs-e-reatividade-básica" class="title-slide slide level1 center">
-<h1>Exemplo de alguns inputs e reatividade básica</h1>
-
 </section>
-<section class="slide level2">
+<section id="classificação-de-dashboards" class="slide level2">
+<h2>Classificação de <em>Dashboards</em></h2>
+<ul>
+<li><p><strong>Operacionais</strong>: Dashboards que são usados para monitorar operações em tempo real.</p></li>
+<li><p><strong>Estratégicos</strong>: Dashboards que são usados para monitorar o progresso em relação a metas estratégicas.</p></li>
+<li><p><strong>Analíticos</strong>: Dashboards que são usados para analisar dados.</p></li>
+</ul>
 
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb2-2"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-3"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny!"</span>),</span>
-<span id="cb2-4"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb2-5"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb2-6"><a href=""></a>      <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"Qual é seu nome?"</span>)</span>
-<span id="cb2-7"><a href=""></a>    ),</span>
-<span id="cb2-8"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb2-9"><a href=""></a>      <span class="fu">textOutput</span>(<span class="st">"greeting"</span>)</span>
-<span id="cb2-10"><a href=""></a>    )</span>
-<span id="cb2-11"><a href=""></a>  )</span>
-<span id="cb2-12"><a href=""></a>)</span>
-<span id="cb2-13"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb2-14"><a href=""></a>  output<span class="sc">$</span>greeting <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb2-15"><a href=""></a>    <span class="fu">paste</span>(<span class="st">"Hello,"</span>, input<span class="sc">$</span>name)</span>
-<span id="cb2-16"><a href=""></a>  })</span>
-<span id="cb2-17"><a href=""></a>}</span>
-<span id="cb2-18"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
-<section>
-<section id="exemplo-de-um-aplicativo-com-reatividade" class="title-slide slide level1 center">
-<h1>Exemplo de um aplicativo com reatividade</h1>
-
+<aside><div>
+<p>Steven Phew, <em>Information Dashboard Design: Effective Visual Communication of Data</em>, 2005</p>
+</div></aside></section></section>
+<section id="considerações-finais" class="title-slide slide level1 center">
+<h1>Considerações finais</h1>
+<ul>
+<li>ShinyDashboard</li>
+<li>ShinyJS</li>
+</ul>
 </section>
-<section class="slide level2">
 
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb3-2"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb3-5"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Gráfico de Dispersão dos Pinguins"</span>),</span>
-<span id="cb3-6"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb3-7"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb3-8"><a href=""></a>      <span class="fu">selectInput</span>(<span class="st">"species"</span>, <span class="st">"Selecione a Espécie:"</span>,</span>
-<span id="cb3-9"><a href=""></a>        <span class="at">choices =</span> <span class="fu">unique</span>(penguins<span class="sc">$</span>species)</span>
-<span id="cb3-10"><a href=""></a>      ),</span>
-<span id="cb3-11"><a href=""></a>      <span class="fu">selectInput</span>(<span class="st">"xvar"</span>, <span class="st">"Selecione a Variável do Eixo X:"</span>,</span>
-<span id="cb3-12"><a href=""></a>        <span class="at">choices =</span> <span class="fu">names</span>(penguins)[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]</span>
-<span id="cb3-13"><a href=""></a>      ),</span>
-<span id="cb3-14"><a href=""></a>      <span class="fu">selectInput</span>(<span class="st">"yvar"</span>, <span class="st">"Selecione a Variável do Eixo Y:"</span>,</span>
-<span id="cb3-15"><a href=""></a>        <span class="at">choices =</span> <span class="fu">names</span>(penguins)[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>],</span>
-<span id="cb3-16"><a href=""></a>        <span class="at">selected =</span> <span class="fu">names</span>(penguins)[<span class="dv">4</span>]</span>
-<span id="cb3-17"><a href=""></a>      )</span>
-<span id="cb3-18"><a href=""></a>    ),</span>
-<span id="cb3-19"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb3-20"><a href=""></a>      <span class="fu">plotOutput</span>(<span class="st">"scatterPlot"</span>)</span>
-<span id="cb3-21"><a href=""></a>    )</span>
-<span id="cb3-22"><a href=""></a>  )</span>
-<span id="cb3-23"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="referências" class="title-slide slide level1 center">
+<h1>Referências</h1>
+<ul>
+<li><a href="https://www.r-project.org/">R</a></li>
+<li><a href="https://shiny.rstudio.com/">Shiny</a></li>
+<li><a href="https://rstudio.github.io/shinydashboard/">ShinyDashboard</a></li>
+<li><a href="https://deanattali.com/shinyjs/">ShinyJS</a></li>
+</ul>
 </section>
-<section class="slide level2">
 
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb4-2"><a href=""></a>  filteredData <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb4-3"><a href=""></a>    penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> input<span class="sc">$</span>species, ]</span>
-<span id="cb4-4"><a href=""></a>  })</span>
-<span id="cb4-5"><a href=""></a></span>
-<span id="cb4-6"><a href=""></a>  output<span class="sc">$</span>scatterPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb4-7"><a href=""></a>    data <span class="ot">&lt;-</span> <span class="fu">filteredData</span>()</span>
-<span id="cb4-8"><a href=""></a>    x <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>xvar]]</span>
-<span id="cb4-9"><a href=""></a>    y <span class="ot">&lt;-</span> data[[input<span class="sc">$</span>yvar]]</span>
-<span id="cb4-10"><a href=""></a></span>
-<span id="cb4-11"><a href=""></a>    <span class="fu">plot</span>(x, y,</span>
-<span id="cb4-12"><a href=""></a>      <span class="at">xlab =</span> input<span class="sc">$</span>xvar,</span>
-<span id="cb4-13"><a href=""></a>      <span class="at">ylab =</span> input<span class="sc">$</span>yvar,</span>
-<span id="cb4-14"><a href=""></a>      <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Gráfico de Dispersão de"</span>, input<span class="sc">$</span>species),</span>
-<span id="cb4-15"><a href=""></a>      <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb4-16"><a href=""></a>      <span class="at">col =</span> <span class="st">"blue"</span></span>
-<span id="cb4-17"><a href=""></a>    )</span>
-<span id="cb4-18"><a href=""></a>  })</span>
-<span id="cb4-19"><a href=""></a>}</span>
-<span id="cb4-20"><a href=""></a></span>
-<span id="cb4-21"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
-<section>
-<section id="exemplo-de-valuebox-com-shinydashboard" class="title-slide slide level1 center">
-<h1>Exemplo de valueBox com shinydashboard</h1>
-
-</section>
-<section class="slide level2">
-
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb5-2"><a href=""></a><span class="fu">library</span>(shinydashboard)</span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(</span>
-<span id="cb5-5"><a href=""></a>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">"Painel Básico"</span>),</span>
-<span id="cb5-6"><a href=""></a>  <span class="fu">dashboardSidebar</span>(),</span>
-<span id="cb5-7"><a href=""></a>  <span class="fu">dashboardBody</span>(</span>
-<span id="cb5-8"><a href=""></a>    <span class="fu">fluidRow</span>(</span>
-<span id="cb5-9"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox1"</span>),</span>
-<span id="cb5-10"><a href=""></a>      <span class="fu">valueBoxOutput</span>(<span class="st">"valuebox2"</span>)</span>
-<span id="cb5-11"><a href=""></a>    )</span>
-<span id="cb5-12"><a href=""></a>  )</span>
-<span id="cb5-13"><a href=""></a>)</span>
-<span id="cb5-14"><a href=""></a></span>
-<span id="cb5-15"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb5-16"><a href=""></a>  output<span class="sc">$</span>valuebox1 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
-<span id="cb5-17"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">42</span>, <span class="st">"Sentido da Vida"</span>)</span>
-<span id="cb5-18"><a href=""></a>  })</span>
-<span id="cb5-19"><a href=""></a></span>
-<span id="cb5-20"><a href=""></a>  output<span class="sc">$</span>valuebox2 <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({</span>
-<span id="cb5-21"><a href=""></a>    <span class="fu">valueBox</span>(<span class="dv">100</span>, <span class="st">"Algum outro valor"</span>)</span>
-<span id="cb5-22"><a href=""></a>  })</span>
-<span id="cb5-23"><a href=""></a>}</span>
-<span id="cb5-24"><a href=""></a></span>
-<span id="cb5-25"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="obrigado" class="title-slide slide level1 center">
+<h1>Obrigado!</h1>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

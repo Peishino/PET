@@ -96,6 +96,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="CursoWebscraping_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="logo.css">
   <link href="CursoWebscraping_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="CursoWebscraping_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="CursoWebscraping_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -468,6 +469,7 @@ Pet Estatística
 <li>html_element()</li>
 <li>html_text2()</li>
 <li>html_attr()</li>
+<li>html_table()</li>
 </ul>
 
 <aside><div>
@@ -543,8 +545,9 @@ Pet Estatística
 <section id="agradecemos-a-participação-de-todos" class="title-slide slide level1 center">
 <h1>Agradecemos a participação de todos!</h1>
 <div class="quarto-auto-generated-content">
+<p><img src="logo_preta.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Pet estatística</p>
+
 </div>
 </div>
 </section>
@@ -944,6 +947,23 @@ Pet Estatística
         }
       }
     });
+    </script>
+    <script type="text/javascript">
+      Reveal.on('ready', event => {
+        if (event.indexh === 0) {
+          document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+        }
+      });
+      Reveal.addEventListener('slidechanged', (event) => {
+        if (event.indexh === 0) {
+          Reveal.configure({ slideNumber: null });
+          document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+        }
+        if (event.indexh === 1) {
+          Reveal.configure({ slideNumber: 'c' });
+          document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+        }
+      });
     </script>
     
 

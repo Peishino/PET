@@ -1,26 +1,33 @@
 ---
-title: "Introdução ao Shiny (R)"
+title: "Dashboards com uso do pacote shiny do R"
 format:
   revealjs: 
     code-block-height: 1000px
     chalkboard: true
-author: Gabriel Moreira
-date: "2024-08-08"
-theme: night
+author:
+ - Gabriel Moreira Bomfim Santos de Freitas
+ - Patrícia Viana da Silva
+theme: moon
 ---
-# O que é o Shiny?
-...
+# Dashboards ?
 
 
-# Por que usar o Shiny?
+# O que é Shiny?
 
+# Elementos principais do Shiny
 
-
-# Componentes principais
-
-# Alguns elementos da interface do usuário:
 
 ---
+
+![Interface do Usuário](ui_temp.png)
+
+---
+
+![Servidor](serv_temp.png)
+
+---
+
+## Recursos da interface do usuário
 
 - **Inputs**: Tipos comuns de entradas (ex: textInput, sliderInput, selectInput).
 
@@ -28,18 +35,15 @@ theme: night
 
 - **Layouts**: Layouts básicos com fluidPage, sidebarLayout, navbarPage, etc.
 
-
-# Exemplo de aplicativo
-
 ---
 
 ```r
 library(shiny)
 ui <- fluidPage(
-  titlePanel("Hello Shiny!"),
+  titlePanel("Histograma de uma distribuição normal"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("obs", "Number of observations:", min = 1, max = 1000, value = 500)
+      sliderInput("obs", "Número de observações:", min = 1, max = 1000, value = 500)
     ),
     mainPanel(
       plotOutput("distPlot")
@@ -52,117 +56,32 @@ server <- function(input, output) {
   })
 }
 shinyApp(ui = ui, server = server)
+
 ```
+## Classificação de *Dashboards*
+
+- **Operacionais**: Dashboards que são usados para monitorar operações em tempo real.
+
+- **Estratégicos**: Dashboards que são usados para monitorar o progresso em relação a metas estratégicas.
+
+- **Analíticos**: Dashboards que são usados para analisar dados.
+
+::: aside
+Steven Phew, *Information Dashboard Design: Effective Visual Communication of Data*, 2005
+:::
+
+# Considerações finais
+
+- ShinyDashboard
+- ShinyJS
+
+# Referências
+
+- [R](https://www.r-project.org/)
+- [Shiny](https://shiny.rstudio.com/)
+- [ShinyDashboard](https://rstudio.github.io/shinydashboard/)
+- [ShinyJS](https://deanattali.com/shinyjs/)
+
+# Obrigado!
 
 
-# Exemplo de alguns inputs e reatividade básica
-
----
-
-```r
-library(shiny)
-ui <- fluidPage(
-  titlePanel("Hello Shiny!"),
-  sidebarLayout(
-    sidebarPanel(
-      textInput("name", "Qual é seu nome?")
-    ),
-    mainPanel(
-      textOutput("greeting")
-    )
-  )
-)
-server <- function(input, output) {
-  output$greeting <- renderText({
-    paste("Hello,", input$name)
-  })
-}
-shinyApp(ui = ui, server = server)
-```
-
-# Exemplo de um aplicativo com reatividade
-
----
-
-```r
-library(shiny)
-library(palmerpenguins)
-
-ui <- fluidPage(
-  titlePanel("Gráfico de Dispersão dos Pinguins"),
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("species", "Selecione a Espécie:",
-        choices = unique(penguins$species)
-      ),
-      selectInput("xvar", "Selecione a Variável do Eixo X:",
-        choices = names(penguins)[3:6]
-      ),
-      selectInput("yvar", "Selecione a Variável do Eixo Y:",
-        choices = names(penguins)[3:6],
-        selected = names(penguins)[4]
-      )
-    ),
-    mainPanel(
-      plotOutput("scatterPlot")
-    )
-  )
-)
-```
-
----
-
-```r
-server <- function(input, output) {
-  filteredData <- reactive({
-    penguins[penguins$species == input$species, ]
-  })
-
-  output$scatterPlot <- renderPlot({
-    data <- filteredData()
-    x <- data[[input$xvar]]
-    y <- data[[input$yvar]]
-
-    plot(x, y,
-      xlab = input$xvar,
-      ylab = input$yvar,
-      main = paste("Gráfico de Dispersão de", input$species),
-      pch = 19,
-      col = "blue"
-    )
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-# Exemplo de valueBox com shinydashboard
----
-
-```r
-library(shiny)
-library(shinydashboard)
-
-ui <- dashboardPage(
-  dashboardHeader(title = "Painel Básico"),
-  dashboardSidebar(),
-  dashboardBody(
-    fluidRow(
-      valueBoxOutput("valuebox1"),
-      valueBoxOutput("valuebox2")
-    )
-  )
-)
-
-server <- function(input, output) {
-  output$valuebox1 <- renderValueBox({
-    valueBox(42, "Sentido da Vida")
-  })
-
-  output$valuebox2 <- renderValueBox({
-    valueBox(100, "Algum outro valor")
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
