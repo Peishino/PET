@@ -1,0 +1,199 @@
+---
+title: "Storytelling com dados"  
+subtitle: "Workshop: um nome muito legal"  
+date-format: long  
+lang: pt-br  
+format:  
+    revealjs:  
+      theme: [simple, styles.scss]  
+      logo: logo_azul.png  
+      css: logo.css  
+      html-math-method: katex  
+      self-contained: false  
+      echo: true  
+      multiplex: true  
+      code-link: true  
+      title-slide-attributes:  
+        data-background-color: "#FFFFFF"  
+      output-location: slide  
+      center: true  
+editor: source  
+
+---
+
+<span style="font-size: 1.4em;">Este workshop é baseado no livro <span style="color:#004B8F">Storytelling With Data</span>, da autora <span style="color:#606163">*Cole Nussbaumer Knaflic*</span>.</span>  
+
+---
+
+## <span style="color:#004B8F">1 - Introdução</span>  
+
+---
+
+"<span style='color:#004B8F'>Dados</span> são o novo petróleo" - *Clive Humby*  
+
+::: {.fragment}  
+E para extrairmos essas informações, utilizamos diversas ferramentas, sendo os <span style="color:#004B8F">gráficos</span> uma das mais utilizadas e de mais <span style='color:#004B8F'>fácil compreensão</span>.  
+:::  
+
+---
+
+<span style="font-size: 1.3em;">Porém...</span>  
+
+::: {.fragment}  
+Nem sempre os <span style='color:#004B8F'>gráficos</span> são bem utilizados.  
+
+Frequentemente encontramos alguns que <span style='color:#004B8F'>não são claros</span>, que não transmitem a mensagem correta ou que são até mesmo <span style='color:#004B8F'>enganosos</span>.  
+:::  
+
+---
+
+![](exp_1.png)  
+
+::: {.fragment}  
+O programa teve algum sucesso?  
+:::  
+
+---
+
+![](exp_1_melhorado.png)  
+
+## <span style="color:#004B8F">2 - A importância do contexto</span>  
+<span style="color:#004B8F">Quem, o que e como</span>  
+
+---
+
+<span style="color:#004B8F">Quem</span> é seu público?  
+
+::: {.fragment}  
+<span style="color:#004B8F">O que</span> eles precisam saber?  
+:::  
+
+::: {.fragment}  
+<span style="color:#004B8F">Como</span> passar essa informação?  
+:::  
+
+---
+
+## Dicas da <span style="color:#606163">autora</span>:  
+
+<span style="color:#004B8F">Intimidade.</span>  
+
+<span style="color:#004B8F">Ação.</span>  
+
+<span style="color:#004B8F">Método.</span>  
+
+---
+
+## <span style="color:#004B8F">3 - Escolha o gráfico certo</span>  
+
+---
+
+![](graphs.png)  
+
+---
+
+![](barras.png)  
+
+---
+
+Se possível, <span style="color:#004B8F">evitar</span>:  
+
+![](pizza3d.png)  
+
+---
+
+## <span style="color:#004B8F">4 - Remova a poluição visual</span>  
+
+---
+
+É comum que os <span style="color:#004B8F">gráficos</span>, por padrão, venham com muitos elementos que <span style="color:#606163">**não são necessários**</span> para a compreensão da mensagem.  
+
+---
+
+![](exp_2.png)  
+
+---
+
+![](exp_2_melhorado.png)  
+
+---
+
+![](exp_2_final.png)  
+
+---
+
+::: {.columns}  
+
+::: {.column}  
+![](exp_2.png)  
+:::  
+
+::: {.column}  
+![](exp_2_final.png)  
+:::  
+
+:::  
+
+---
+
+## <span style="color:#004B8F">5 - Foque a atenção do seu público</span>  
+
+---
+
+::: {.columns}  
+
+::: {.column}  
+![](semfoco.png)  
+:::  
+
+::: {.column}  
+:::{.fragment}  
+
+![](comfoco.png)  
+:::  
+:::  
+
+:::
+
+---
+
+![](exp2_final_foco.png)  
+
+---
+
+## <span style="color:#004B8F">6 - Vamos contar uma história!</span>  
+
+---
+
+![](exp_4.png)  
+
+---
+
+![](exp_4_linhas.png)  
+
+---
+
+![](exp_4_limpo.png)  
+
+---
+
+![](exp_4_foco.png)  
+
+---
+
+![](exp_4_media.png)  
+
+---
+
+## <span style="color:#004B8F">7 - Conclusão</span>  
+
+---
+
+Aprendemos a importância de <span style="color:#004B8F">contextualizar</span> os dados, escolher o <span style="color:#004B8F">gráfico</span> correto, <span style="color:#004B8F">remover a poluição visual</span> e <span style="color:#004B8F">focar a atenção</span> do público.  
+
+E, com isso, conseguimos <span style="color:#004B8F">contar uma história</span> com os dados.  
+
+---
+
+## <span style="color:#004B8F">Fim</span>  
+Espero que tenham gostado!  

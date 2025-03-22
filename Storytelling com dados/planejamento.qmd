@@ -1,0 +1,92 @@
+---
+title: "Planejamento de nossas atividades"
+author: "PET ESTATÍSTICA"
+date: 02/03/2025
+date-format: long
+lang: pt-br
+format: 
+    revealjs:
+      theme: [simple, styles.scss]
+      logo: logo_preta.png
+      css: logo.css
+      html-math-method: katex
+      self-contained: false
+      echo: true
+      multiplex: true
+      code-link: true
+      title-slide-attributes:
+        data-background-color: "#447099"
+      output-location: slide
+      center: true
+editor: source
+include-after: |
+  <script type="text/javascript">
+    Reveal.on('ready', event => {
+      if (event.indexh === 0) {
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+    });
+    Reveal.addEventListener('slidechanged', (event) => {
+      if (event.indexh === 0) {
+        Reveal.configure({ slideNumber: null });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+      if (event.indexh === 1) { 
+        Reveal.configure({ slideNumber: 'c' });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+      }
+    });
+  </script>
+---
+
+# Propostas para 2025!
+
+## 1. Aulas de pré-cálculo; Ensino
+
+Atividade de ensino, visando resolver o problema de evasão dos alunos da estatística, podemos ministrar aulas de pré cálculo para auxílio nessa fase inicial.
+
+## 2. Sábado Normal; ensino
+
+Um sábado para gravarmos (pode ser live?) vídeo-aulas sobre resolução de questões enviadas pelos alunos do curso. A ideia é tentar ajudar alunos que não têm disponibilidade de tempo para estar na UFU fora dos horários de aula.
+
+## 3. Tradução de livro; ensino e extensão
+
+Em parceria com o PET Línguas, traduzir um livro de Inferência Estatística que não tem tradução. Podemos traduzir o primeiro capítulo e avaliar a continuidade da atividade.
+
+## 4. Dashboard: vaga nos estacionamentos da UFU; pesquisa
+
+Vamos inferir a probabilidade de encontrar vaga no estacionamento da UFU em função do horário e do setor do estacionamento (em frente ao 3Q, por exemplo). Podemos tentar parceria com a Eng. da Computação para tentar coletar os dados com algum equipamento.
+
+## 5. Base Matemática; Ensino
+
+É uma atividade voltada para fortalecer os conhecimentos essenciais de matemática dos estudantes, preparando-os para cursar Cálculo 1 com maior confiança e equilíbrio de aprendizado dentro das turmas. O foco está em revisar conceitos fundamentais, identificar dificuldades individuais, e oferecer materiais de estudo complementares.
+
+## 6. PET Ensina; Extensão
+
+O objetivo da atividade é fornecer cursos de capacitação para jovens carentes de escolas públicas de Uberlândia, ampliando as oportunidades de conseguirem um emprego minimamente decente. Quais cursos? Informática básica(Word, Excel e PowerPoint), Criação de currículos, preparação para entrevista. Local: Vila digital UFU ou se possível nas escolas.
+
+## 7. Grupão de Estudos; Ensino
+
+Grupo de estudos aberto ao público focado na resolução de exercícios de probabilidade, cálculo e questões sobre estatística em concursos.
+
+## 8. Road to Data Scientist - Um Ano de Aprendizado Contínuo; Ensino
+
+Capacitar os membros do PET Estatística a adquirirem, ao longo de um ano, as principais habilidades e conhecimentos necessários para se tornarem cientistas de dados. Utilizando principalmente de livros diversos e da metodologia flipped classroom. Estrutura: Cada mês focar em um tema ou habilidade essencial, com atividades práticas, desafios e recursos de aprendizado. Chefão final: Cada membro criará um projeto que poderia ser apresentado na SEMEST por exemplo.
+
+## 9. Vem entender; Ensino e Extensão
+
+Nessa atividade, nós abordaremos temas de interesse público em que a Estatística desempenha um papel importante. Alguns temas possíveis que já pensei: 1. Como funcionam as pesquisas eleitorais? 2. Por quê as vacinas são confiáveis? 3. Por quê você não deveria apostar no tigrinho e nas bets? Poderia até ser feita uma parceria com alunos do jornalismo.
+
+## 10. Plantão aberto com o PET; Ensino e Extensão
+
+Seriam organizados encontros, em um laboratório ou sala de aula, em que petianos ficariam disponiveis para auxiliar na resolução de listas ou tirar dúvidas sobre temas específicos das disciplinas do curso. Os alunos seriam incentivados a levar suas dúvidas sobre exercícios ou conceitos teóricos.
+
+
+## 11. Conexão estatística; ação integrativa
+
+Dividir o grupo em subgrupos (de 3 a 4 alunos) que tem que ser reunir e produzir um projeto/análise/ apresentação e apresentar para todo o grupo. O intuito é aproximar e promover a integração de petianos de diferentes períodos
+
+## 12. Vamos escrever um livro! Extensão, Pesquisa
+
+A ideia é olhar para os dados do censo desde o império até os dias de Uberlândia e analisar estes dados, talvez focando na população mais idosa e ver como esta população tem se distruído ao longo dos anos; entrevistar pessoas mais velhas da cidade e dedicar o capítulo final a estas pessoas. Talvez seja necessário utilizar inteligência artificial e aprendizado de máquina para obter os dados do império.
+

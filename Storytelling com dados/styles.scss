@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/*-- scss:defaults --*/
+
+$link-color: #EE6331;
+$font-family-sans-serif: 'Open Sans', sans-serif !important;
+$font-family-monospace: 'Fira Mono', monospace !important;
+
+.title {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #004B8F;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #606163;
+}
+
+/*-- scss:rules --*/
+h2 {
+  color: #161616 !important;
+}
+// quero mudar a cor do background dos slides
+.reveal {
+  background-color: #f0f0f00c;
+}
+#title-slide {
+  text-align: center;
+
+  .quarto-title-authors {
+    justify-content: center;
+    color: #004B8F;
+    .quarto-title-author { // optional, test it for yourself
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
