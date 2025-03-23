@@ -1,6 +1,6 @@
 ---
-title: "Storytelling com dados"  
-subtitle: "Workshop: um nome muito legal"  
+title: "O Que os Dados Dizem"  
+subtitle: "Um Guia Prático para Criar Narrativas Visuais"  
 date-format: long  
 lang: pt-br  
 format:  
@@ -18,7 +18,24 @@ format:
       output-location: slide  
       center: true  
 editor: source  
-
+include-after: |
+  <script type="text/javascript">
+    Reveal.on('ready', event => {
+      if (event.indexh === 0) {
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+    });
+    Reveal.addEventListener('slidechanged', (event) => {
+      if (event.indexh === 0) {
+        Reveal.configure({ slideNumber: null });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+      if (event.indexh === 1) { 
+        Reveal.configure({ slideNumber: 'c' });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+      }
+    });
+  </script>
 ---
 
 <span style="font-size: 1.4em;">Este workshop é baseado no livro <span style="color:#004B8F">Storytelling With Data</span>, da autora <span style="color:#606163">*Cole Nussbaumer Knaflic*</span>.</span>  
@@ -47,7 +64,7 @@ Frequentemente encontramos alguns que <span style='color:#004B8F'>não são clar
 
 ---
 
-![](exp_1.png)  
+![](exp_1.png){fig-aling="center"}
 
 ::: {.fragment}  
 O programa teve algum sucesso?  
@@ -55,7 +72,7 @@ O programa teve algum sucesso?
 
 ---
 
-![](exp_1_melhorado.png)  
+![](exp_1_melhorado.png){fig-align="center"}
 
 ## <span style="color:#004B8F">2 - A importância do contexto</span>  
 <span style="color:#004B8F">Quem, o que e como</span>  
@@ -88,15 +105,15 @@ O programa teve algum sucesso?
 
 ---
 
-![](graphs.png)  
+![](graphs.png){fig-aling="center"}  
 
 ---
 
-![](barras.png)  
+![](barras.png){fig-aling="center"}
 
 ---
 
-Se possível, <span style="color:#004B8F">evitar</span>:  
+Se possível, <span style="color:#004B8F">**evitar**</span>:  
 
 ![](pizza3d.png)  
 
@@ -110,26 +127,26 @@ Se possível, <span style="color:#004B8F">evitar</span>:
 
 ---
 
-![](exp_2.png)  
+![](exp_2.png){fig-aling="center"}
 
 ---
 
-![](exp_2_melhorado.png)  
+![](exp_2_melhorado.png){fig-aling="center"}
 
 ---
 
-![](exp_2_final.png)  
+![](exp_2_final.png){fig-aling="center"}
 
 ---
 
 ::: {.columns}  
 
 ::: {.column}  
-![](exp_2.png)  
+![](exp_2.png){fig-aling="center"}
 :::  
 
 ::: {.column}  
-![](exp_2_final.png)  
+![](exp_2_final.png){fig-aling="center"} 
 :::  
 
 :::  
@@ -143,13 +160,13 @@ Se possível, <span style="color:#004B8F">evitar</span>:
 ::: {.columns}  
 
 ::: {.column}  
-![](semfoco.png)  
+![](semfoco.png){fig-aling="center"}
 :::  
 
 ::: {.column}  
 :::{.fragment}  
 
-![](comfoco.png)  
+![](comfoco.png){fig-aling="center"}
 :::  
 :::  
 
@@ -157,7 +174,7 @@ Se possível, <span style="color:#004B8F">evitar</span>:
 
 ---
 
-![](exp2_final_foco.png)  
+![](exp2_final_foco.png){fig-aling="center"}
 
 ---
 
@@ -165,19 +182,19 @@ Se possível, <span style="color:#004B8F">evitar</span>:
 
 ---
 
-![](exp_4.png)  
+![](exp_4.png){fig-aling="center"}
 
 ---
 
-![](exp_4_linhas.png)  
+![](exp_4_linhas.png){fig-aling="center"} 
 
 ---
 
-![](exp_4_limpo.png)  
+![](exp_4_limpo.png){fig-aling="center"}
 
 ---
 
-![](exp_4_foco.png)  
+![](exp_4_foco.png){fig-aling="center"}
 
 ---
 
