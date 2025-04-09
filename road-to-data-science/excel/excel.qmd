@@ -1,0 +1,109 @@
+---
+title: "Road to Data Science"
+subtitle: "Excel um mal necessário"
+author: "Gabriel Moreira"
+date: 04/11/2025
+date-format: long
+lang: pt-br
+format: 
+    revealjs:
+      theme: [simple, styles.scss]
+      logo: logo_preta.png
+      css: logo.css
+      html-math-method: katex
+      self-contained: false
+      echo: true
+      multiplex: true
+      code-link: true
+      title-slide-attributes:
+        data-background-color: "#FFFFFF"
+      output-location: slide
+      center: true
+editor: source
+include-after: |
+  <script type="text/javascript">
+    Reveal.on('ready', event => {
+      if (event.indexh === 0) {
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+    });
+    Reveal.addEventListener('slidechanged', (event) => {
+      if (event.indexh === 0) {
+        Reveal.configure({ slideNumber: null });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+      }
+      if (event.indexh === 1) { 
+        Reveal.configure({ slideNumber: 'c' });
+        document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+      }
+    });
+  </script>
+---
+
+É um <span style='color:#107B41'>dataframe</span>?
+
+::: {.fragment}  
+É um <span style='color:#107B41'> dashboard</span>?
+::: 
+
+::: {.fragment}  
+É uma <span style='color:#107B41'>IA</span>?
+:::
+
+::: {.fragment}  
+<span style='color:#107B41'>NÃO</span>!!! 
+:::
+
+---
+
+
+
+## É o <span style='color:#107B41'>super excel</span>! {transition="convex-in none-out" transition-speed="fast"}
+
+:::{.columns}
+:::{.column}
+![](super_excel.png)
+:::
+
+:::{.column}
+
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 500px; text-align: center;">
+
+*"Não sou o herói que vocês <span style='color:#107B41'>querem</span>, mas sim o herói que vocês <span style='color:#107B41'>precisam</span>"*
+
+
+</div>
+
+:::
+
+:::
+
+---
+
+## 1 - Introdução
+
+---
+
+O excel é uma ferramenta muito utilizada no <span style='color:#107B41'>mercado de trabalho</span>.
+
+---
+
+- <span style='color:#107B41'>Facilidade</span>.
+
+- <span style='color:#107B41'>Baixo custo</span>.
+
+- <span style='color:#107B41'>Velocidade</span>.
+
+- <span style='color:#107B41'>Versatilidade</span>.
+
+---
+
+## 2 - Fórmulas
+
+---
+
+## 3 - Tabelas Dinâmicas
+
+
+

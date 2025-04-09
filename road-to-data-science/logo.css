@@ -1,0 +1,10 @@
+.reveal .slide-logo {
+  height: 60px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+.reveal pre code.large-code {
+  font-size: 2.5em;  /* Ajuste este valor conforme necessário */
+  line-height: 12.2;  /* Ajuste a altura da linha se necessário */
+}
