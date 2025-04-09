@@ -1,6 +1,6 @@
 ---
 title: "Road to Data Science"
-subtitle: "Excel um mal necessário"
+subtitle: "Excel: um mal necessário"
 author: "Gabriel Moreira"
 date: 04/11/2025
 date-format: long
@@ -40,18 +40,18 @@ include-after: |
   </script>
 ---
 
-É um <span style='color:#107B41'>dataframe</span>?
+### É um <span style='color:#107B41'>dataframe?</span>
 
 ::: {.fragment}  
-É um <span style='color:#107B41'> dashboard</span>?
+### É um <span style='color:#107B41'> dashboard?</span>
 ::: 
 
 ::: {.fragment}  
-É uma <span style='color:#107B41'>IA</span>?
+### É uma <span style='color:#107B41'>IA?</span>
 :::
 
 ::: {.fragment}  
-<span style='color:#107B41'>NÃO</span>!!! 
+### <span style='color:#F6B322'>NÃO!!!</span>
 :::
 
 ---
@@ -70,7 +70,7 @@ include-after: |
 
 <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 500px; text-align: center;">
 
-*"Não sou o herói que vocês <span style='color:#107B41'>querem</span>, mas sim o herói que vocês <span style='color:#107B41'>precisam</span>"*
+*"Não sou o herói que vocês <span style='color:#F6B322'>**querem**</span>, mas sim o herói que vocês <span style='color:#F6B322'>**precisam**</span>"*
 
 
 </div>
@@ -85,17 +85,17 @@ include-after: |
 
 ---
 
-O excel é uma ferramenta muito utilizada no <span style='color:#107B41'>mercado de trabalho</span>.
+### O excel é uma <span style='color:#107B41'>ferramenta analítica</span> muito utilizada no mercado de trabalho.
 
----
+::: {.fragment} 
 
-- <span style='color:#107B41'>Facilidade</span>.
+- <span style='color:#F6B322'>*Facilidade.*</span>
 
-- <span style='color:#107B41'>Baixo custo</span>.
+- <span style='color:#F6B322'>*Velocidade.*</span>
 
-- <span style='color:#107B41'>Velocidade</span>.
+- <span style='color:#F6B322'>*Versatilidade.*</span>
 
-- <span style='color:#107B41'>Versatilidade</span>.
+:::
 
 ---
 
@@ -103,7 +103,74 @@ O excel é uma ferramenta muito utilizada no <span style='color:#107B41'>mercado
 
 ---
 
-## 3 - Tabelas Dinâmicas
+### Meu maior <span style='color:#107B41'>pesadelo</span>.
+
+::: {.fragment}
+Se você é assim como eu era
+
+<span style='color:#F6B322'>Calma</span>, vem comigo...
+:::
+
+---
+
+### Vamos ver na <span style='color:#107B41'>prática</span> algumas funções:
+
+::: {.fragment}
+### <span style='color:#F6B322'>Numéricas</span>
+:::
+
+::: {.fragment}
+### <span style='color:#F6B322'>Lógicas</span>
+:::
+
+::: {.fragment}
+### De <span style='color:#F6B322'>Texto</span>
+:::
+
+::: {.fragment}
+### <span style='color:#F6B322'>Data e hora</span>
+:::
+
+::: {.fragment}
+### E por fim de <span style='color:#F6B322'>Pesquisa</span>
+:::
+
+---
+
+## 3 - Filtros e alguns atalhos
+
+---
+
+## 4 - Tabelas Dinâmicas
+
+---
+
+### A tabela dinâmica é, em poucas palavras, uma <span style='color:#107B41'>tabela resumo.</span>
+
+---
+
+## 5 - Gráficos...
+
+---
+
+## Pontos <span style='color:#107B41'>importantíssimos</span>:
+
+Excel <span style='color:#F6B322'>**não**</span> é banco de dados.
+
+Excel <span style='color:#F6B322'>**não**</span> lida com grandes volumes de dados.
+
+Excel <span style='color:#F6B322'>**não**</span> possui versionamento.
+
+::: {.fragment}
+**Porém**, o excel é uma ferramenta muito boa para um <span style='color:#107B41'>primeiro contato</span> com dados e <span style='color:#107B41'>análises rápidas</span>.
+ 
+
+:::
+
+## <span style='color:#107B41'>Agora é com vocês!</span>
+Obrigado pela atenção!
+
+
 
 
 
