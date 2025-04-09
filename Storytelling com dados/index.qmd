@@ -214,3 +214,7 @@ E, com isso, conseguimos <span style="color:#004B8F">contar uma história</span>
 
 ## <span style="color:#004B8F">Fim</span>  
 Espero que tenham gostado!  
+
+---
+
+![](qrcode.jfif){fig-aling="center"}
