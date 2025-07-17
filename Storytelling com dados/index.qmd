@@ -54,6 +54,15 @@ E para extrairmos essas informações, utilizamos diversas ferramentas, sendo os
 
 ---
 
+## <span style='color:#004B8F'>Desafio:</span> 
+
+Você trabalha para a <span style='color:#004B8F'>Prefeitura de Uberlândia</span>  e precisa apresentar um relatório sobre os <span style='color:#004B8F'>crimes violentos</span>  da cidade em comparação com outras cidades mineiras. 
+
+Analise os dados e crie um <span style='color:#004B8F'>gráfico</span> para comunicar a ideia que você quer passar.
+Salve o gráfico com o seu nome e envie para o nosso <span style='color:#004B8F'>Google Drive</span>.
+
+---
+
 <span style="font-size: 1.3em;">Porém...</span>  
 
 ::: {.fragment}  
