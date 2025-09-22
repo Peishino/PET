@@ -1,0 +1,2 @@
+url <- "https://docs.google.com/spreadsheets/d/1ADpRfqFmci-P-psHRDWjYookIxx2_O-wczSQbAag9CM/edit?usp=sharing"
+gs4_auth(email = "gabriel.moreira419@gmail.com", scopes = "https://www.googleapis.com/auth/spreadsheets.readonly")

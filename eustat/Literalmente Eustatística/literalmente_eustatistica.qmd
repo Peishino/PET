@@ -1,0 +1,27 @@
+---
+title: "Literalmente Eustatística"
+author: "Gabriel Moreira"
+format: revealjs
+theme: moon
+---
+
+## Tempo dormido :D
+
+
+Menor tempo dormido : 1H 25M
+
+Maior tempo dormido : 10H 34M
+
+Média do tempo dormido : 7H 39M
+
+---
+
+## Histograma do tempo dormido
+
+![](histograma_sono.png){width=50%}
+
+---
+
+## Boxplot do tempo dormido
+
+![](boxplot_sono.png){width=50%}
