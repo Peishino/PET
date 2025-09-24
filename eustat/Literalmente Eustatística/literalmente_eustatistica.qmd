@@ -1,27 +1,109 @@
 ---
 title: "Literalmente Eustatística"
+subtitle: "Estatísticas sobre 2025 (até agr)"
 author: "Gabriel Moreira"
-format: revealjs
 theme: moon
+date: "2025-09-22"
+format: 
+  revealjs:
+    transition: fade
 ---
 
-## Tempo dormido :D
+# Eu 💪🥸👌
 
+---
 
-Menor tempo dormido : 1H 25M
+:::{.columns}
 
-Maior tempo dormido : 10H 34M
+:::{.column width="45%"}
 
-Média do tempo dormido : 7H 39M
+![](gabrielzin.jpg){width=60%}
+:::
+
+:::{.column width= "55%"}
+
+- Passo <span style= 'color:#ffffff'> **89%** </span> do meu tempo procurando coisas que eu mesmo perdi.
+
+- Esse ano eu devo ter corrido um total de <span style= 'color:#ffffff'>2 km</span>.
+<span style= 'font-size:15px'>(vai tomano</span>
+
+- Eu tenho <span style= 'color:#ffffff'>50%</span> de chance de ganhar na Mega-Sena.
+
+- Eu calço <span style= 'color:#ffffff'>43</span>, pra quem quiser me dar um tênis de presente.
+
+:::
+
+:::
+
+# Agora o papo é sério! 
+
+# Estatísticas 😎
+
+---
+
+## Dormir é bom de mais!
+
+Um bom sono é essencial para a saúde física e mental. Ele ajuda a melhorar a memória, o humor, a concentração e a produtividade. Além disso, o sono adequado fortalece o sistema imunológico, reduz o risco de doenças crônicas e promove a recuperação muscular.
+
+:::{.fragment}
+<span style= 'color:#ffffff'>Dito isso...</span>
+:::
+
+:::{.fragment}
+Menor tempo dormido : <span style= 'color:#ffffff'>1H 25M</span>.
+
+Maior tempo dormido : <span style= 'color:#ffffff'>10H 34M</span>.
+
+Média do tempo dormido : <span style= 'color:#ffffff'>7H 39M</span>.
+:::
 
 ---
 
 ## Histograma do tempo dormido
 
-![](histograma_sono.png){width=50%}
+![6h 56m a 8h 20m](histograma_sono.jpg)
 
 ---
 
 ## Boxplot do tempo dormido
 
-![](boxplot_sono.png){width=50%}
+![5h 33m a 10h](boxplot_sono.jpg)
+
+---
+
+## Tempo dormido por mês
+
+![22% do Mês](grafico_tempo_dormido_mes.jpg)
+
+## Menor tempo dormido por dia da semana
+
+![Maluco](menor_sono_diasemana.jpg)
+
+## Maior tempo dormido por dia da semana
+![Paz](maior_sono_diasemana.jpg)
+
+## Sonequinha 😴
+
+As vezes uma soneca no meio do dia pode fazer milagres para a sua <span style= 'color:#ffffff'>energia e concentração</span>.
+
+Menor tempo de soneca : <span style= 'color:#ffffff'> 0H 0M</span>👍.
+
+:::{.fragment}
+
+Ou pode até mesmo ser usada para <span style= 'color:#ffffff'>recuperar o sono perdido</span> durante uma noite 🔥🥳.
+
+Maior tempo de soneca : <span style= 'color:#ffffff'> 5H 16M</span>.
+:::
+
+---
+
+## Histograma do tempo de soneca 
+
+![Mediana : 47M 30S](histograma_soneca.jpg)
+
+
+## Sonequinha (Bruta)
+![-0,24](soneca_tempo_dormido.jpg)
+
+## Sonequinha (Filtrada) 
+![-0.51](soneca_tempo_dormido_filtrado.jpg)
