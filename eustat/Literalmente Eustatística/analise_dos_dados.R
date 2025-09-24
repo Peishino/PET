@@ -101,9 +101,9 @@ graf1 <- ggplot(sono_mes, aes(x = Mês, y = as.numeric(Soma_Tempo_Dormido))) +
     x = tail(sono_mes$Mês, 1), 
     y = as.numeric(media_dias_dormidos_mes), 
     label = as.character(round(media_dias_dormidos_mes, 0)),
-    color = "#002B36", # A cor do texto
-    hjust = 0.33, # Ajuste horizontal para mover o texto para fora da barra
-    vjust = -0.5 # Ajuste vertical para mover o texto para cima da linha
+    color = "#002B36", 
+    hjust = 0.33, 
+    vjust = -0.5 
   ) +
   labs(title = "") + 
   theme_minimal() +
@@ -199,7 +199,7 @@ media_soneca_mes <- soneca %>%
   group_by(Mês) %>%
   summarise(Media_Soneca = seconds_to_period(mean(Soneca, na.rm = TRUE)))
 # histograma da soneca
-seconds_to_period(4000)
+seconds_to_period(30000)
 jpeg("histograma_soneca.jpg", width = 1200, height = 600)
 hist(soneca$Soneca, main = "", xlab = "", col = "lightblue", border = "black")
 dev.off()
@@ -272,3 +272,51 @@ ggsave(
   units = "in",
   dpi = 300
 )
+
+
+# Série temporal de total de sono
+
+sono <- sono %>%
+  arrange(Data)
+
+rotulos_hlines <- tibble(
+  x_pos = tail(sono$Data, 1),
+  y_pos = c(35000, 22000),
+  label = c(as.character(seconds_to_period(35000)), as.character(seconds_to_period(22000)))
+)
+
+graf4 <- ggplot(sono, aes(x = Data, y = as.numeric(Total_dormido))) +
+  geom_line(color = "#002B36", size = 2) +
+  geom_hline(yintercept = 35000, color = "#002B36", linetype = "dashed", size = 1) +
+  geom_hline(yintercept = 22000, color = "#002B36", linetype = "dashed", size = 1) +
+  geom_text(
+    data = rotulos_hlines,
+    aes(x = x_pos, y = y_pos, label = label),
+    color = "#002B36",
+    hjust = 0.33,
+    vjust = -0.5
+  ) +
+  labs(title = "", x = "", y = "") +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+graf4
+ggsave(
+  filename = "tempo_dormido.jpg",
+  plot = graf4,
+  width = 12,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
+seconds_to_period(sum(as.numeric(sono$Total_dormido))) ############# altera la a soma
+
+
+
+
+

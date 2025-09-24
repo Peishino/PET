@@ -107,3 +107,7 @@ Maior tempo de soneca : <span style= 'color:#ffffff'> 5H 16M</span>.
 
 ## Sonequinha (Filtrada) 
 ![-0.51](soneca_tempo_dormido_filtrado.jpg)
+
+## Total dormido
+
+![72d 22H 56M](tempo_dormido.jpg)
