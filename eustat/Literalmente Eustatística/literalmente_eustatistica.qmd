@@ -1,43 +1,17 @@
 ---
 title: "Literalmente Eustatística"
-subtitle: "Estatísticas sobre 2025 (até agr)"
+subtitle: "Algumas estatísticas pessoais sobre 2025 (até agr)"
 author: "Gabriel Moreira"
 theme: moon
-date: "2025-09-22"
 format: 
   revealjs:
     transition: fade
 ---
 
-# Eu 💪🥸👌
+# Dados
 
----
 
-:::{.columns}
-
-:::{.column width="45%"}
-
-![](gabrielzin.jpg){width=60%}
-:::
-
-:::{.column width= "55%"}
-
-- Passo <span style= 'color:#ffffff'> **89%** </span> do meu tempo procurando coisas que eu mesmo perdi.
-
-- Esse ano eu devo ter corrido um total de <span style= 'color:#ffffff'>2 km</span>.
-<span style= 'font-size:15px'>(vai tomano</span>
-
-- Eu tenho <span style= 'color:#ffffff'>50%</span> de chance de ganhar na Mega-Sena.
-
-- Eu calço <span style= 'color:#ffffff'>43</span>, pra quem quiser me dar um tênis de presente.
-
-:::
-
-:::
-
-# Agora o papo é sério! 
-
-# Estatísticas 😎
+# Sono 😴
 
 ---
 
@@ -102,12 +76,59 @@ Maior tempo de soneca : <span style= 'color:#ffffff'> 5H 16M</span>.
 ![Mediana : 47M 30S](histograma_soneca.jpg)
 
 
-## Sonequinha (Bruta)
+## Sonequinha x Tempo dormido (Bruta)
 ![-0,24](soneca_tempo_dormido.jpg)
 
-## Sonequinha (Filtrada) 
+## Sonequinha x Tempo dormido (Filtrada) 
 ![-0.51](soneca_tempo_dormido_filtrado.jpg)
 
 ## Total dormido
 
 ![72d 22H 56M](tempo_dormido.jpg)
+
+# Treino 🏋✅️
+
+## Além do shape
+
+Treinar regularmente traz inúmeros benefícios para a saúde <span style= 'color:#ffffff'>física e mental</span>. Ele ajuda a melhorar a <span style= 'color:#ffffff'>força muscular, a resistência cardiovascular, a flexibilidade e o equilíbrio</span>. Além disso, o exercício físico libera endorfinas, que são neurotransmissores responsáveis pela sensação de <span style= 'color:#ffffff'>bem-estar e felicidade</span>.
+
+---
+
+## Tempo treinado por mês
+
+![RColorBrewer](waffle_treinos.jpg)
+
+## Número de treinos até aqui!
+
+![22 dias úteis](waterfall_treinos.jpg)
+
+# Finanças 💸
+
+## Dinheiro
+
+Manter um controle financeiro é fundamental para garantir a estabilidade econômica e alcançar objetivos pessoais.
+
+:::{.fragment}
+É importante lembrar que cada um possui uma <span style= 'color:#ffffff'>realidade financeira diferente</span>.
+:::
+
+:::{.fragment}
+O mês que mais gastei esse ano foi em <span style= 'color:#ffffff'>Junho</span>.
+
+E o que menos gastei foi em <span style= 'color:#ffffff'>Fevereiro</span>.
+
+A categoria que mais gastei foi <span style= 'color:#ffffff'>Estética</span>.
+:::
+
+## Gastos por categoria
+![☹️](gastos_categoria.jpg)
+
+## Rendimentos
+![6%](dinheiro_mes.jpg)
+
+## Moto x Carro popular
+![2624.1 KM](gasto_moto_carro.jpg)
+
+# É isso!
+
+# Obrigado! 🙏

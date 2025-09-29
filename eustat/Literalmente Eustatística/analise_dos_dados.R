@@ -1,5 +1,11 @@
-#install.packages("googlesheets4")
+# pacotes
+{
 library(googlesheets4)
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(RColorBrewer)
+}
 
 url <- "https://docs.google.com/spreadsheets/d/1ADpRfqFmci-P-psHRDWjYookIxx2_O-wczSQbAag9CM/edit?usp=sharing"
 gs4_auth(email = "gabriel.moreira419@gmail.com", scopes = "https://www.googleapis.com/auth/spreadsheets.readonly")
@@ -9,8 +15,7 @@ sono <- read_sheet(url, sheet = "Sono")
 peso <- read_sheet(url, sheet = "Peso")
 setwd("C:/Users/bielm/OneDrive/Documents/GitHub/PET/eustat/Literalmente Eustatística")
 
-library(dplyr)
-library(lubridate)
+
 
 sono <- sono %>%
   mutate(
@@ -92,7 +97,7 @@ barplot(as.numeric(sono_mes$Max_Tempo_Dormido),
 
 
 # gráfico de barras com uma linha de média 
-library(ggplot2)
+
 graf1 <- ggplot(sono_mes, aes(x = Mês, y = as.numeric(Soma_Tempo_Dormido))) +
   geom_bar(stat = "identity", fill = "lightgray") +
   geom_hline(yintercept = as.numeric(media_dias_dormidos_mes), color = "#002B36", linetype = "dashed", size = 1) +
@@ -316,7 +321,184 @@ ggsave(
 )
 seconds_to_period(sum(as.numeric(sono$Total_dormido))) ############# altera la a soma
 
+# Analisando os treinos
+
+treinos <- na.omit(treinos)
+data_base <- as.POSIXct("1899-12-30 00:00:00", tz = "UTC")
+
+treinos <- treinos %>%
+  mutate(
+    diferenca_tempo = difftime(`Tempo total`, data_base, units = "secs"),
+    Tempo_total_Segundos = as.numeric(diferenca_tempo)
+  )
 
 
 
+# waffle plot
 
+total_treino <- sum(treinos$Tempo_total_Segundos, na.rm = TRUE)
+treinos$total_treino_prop <- round((treinos$Tempo_total_Segundos / total_treino) * 100,0)
+sum(treinos$total_treino_prop)
+diferenca_faltante <- 100 - sum(treinos$total_treino_prop)
+treinos$total_treino_prop[which.max(treinos$total_treino_prop)] <- treinos$total_treino_prop[which.max(treinos$total_treino_prop)] + diferenca_faltante # só pra ficar 100
+
+dados_waffle_base <- treinos %>%
+  select(Categoria = Mês, Valor = total_treino_prop) %>% 
+  distinct() %>% 
+  filter(Valor > 0) 
+
+dados_waffle_grid <- dados_waffle_base %>%
+  uncount(Valor) %>%
+  mutate(
+    id = 1:n(),
+    x = rep(1:10, each = 10),
+    y = rep(1:10, times = 10), 
+    Categoria = factor(Categoria, levels = unique(dados_waffle_base$Categoria))
+  )
+
+
+
+num_categorias <- n_distinct(dados_waffle_grid$Categoria)
+
+
+cores_selecionadas <- brewer.pal(num_categorias, "BrBG")
+
+graf5 <- ggplot(dados_waffle_grid, aes(x = x, y = y, fill = Categoria)) +
+  geom_tile(color = "white", linewidth = 1) +
+  coord_fixed() +
+  scale_fill_manual(values = cores_selecionadas) +
+  labs(fill = "") +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    legend.position = "bottom"
+  )
+graf5
+ggsave(
+  filename = "waffle_treinos.jpg",
+  plot = graf5,
+  width = 12,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
+
+# waterfall plot
+
+
+dados_waterfall <- treinos %>%
+  rename(Mudanca = `Treinos Total`) %>% 
+  mutate(
+    y_end = cumsum(Mudanca), 
+    y_start = lag(y_end, default = 0),
+    x_pos = 1:n(),
+    direcao = "Treinos"
+  )
+
+
+dados_waterfall_final <- dados_waterfall %>%
+  add_row(
+    Mês = "2025",
+    Mudanca = sum(dados_waterfall$Mudanca),
+    y_end = sum(dados_waterfall$Mudanca),
+    y_start = 0,
+    direcao = "Total",
+    x_pos = n_distinct(dados_waterfall$Mês) + 1
+  ) %>%
+  mutate(Mês = factor(Mês, levels = unique(Mês)))
+
+
+cores_waterfall <- c("Treinos" = "#002B36", "Total" = "lightgrey")
+
+plot6 <- ggplot(dados_waterfall_final, aes(x = Mês, fill = direcao)) +
+  geom_rect(aes(
+    xmin = x_pos - 0.45,
+    xmax = x_pos + 0.45,
+    ymin = y_start,
+    ymax = y_end
+  ), color = "black") +
+  labs(fill = "") +
+  geom_segment(
+    aes(x = x_pos - 0.45,
+        xend = x_pos + 0.55,
+        y = y_end,
+        yend = y_end
+    ),
+    data = dados_waterfall, 
+    linetype = "dashed",
+    color = "gray"
+  ) +
+  
+  geom_text(
+    aes(x = x_pos, y = y_end, 
+        label = round(Mudanca, 0) 
+    ),
+    vjust = ifelse(dados_waterfall_final$Mudanca >= 0, -0.5, 1.5),
+    size = 4
+  ) +
+  
+  scale_fill_manual(values = cores_waterfall) +
+  labs(
+    title = "",
+    y = "Total Acumulado"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    legend.position = "top",
+  )
+plot6
+ggsave(
+  filename = "waterfall_treinos.jpg",
+  plot = plot6,
+  width = 12,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
+
+# moto x carro popular
+distancia <- 2624.1 # km
+km_por_litro_moto <- 35  # km/l  
+km_por_litro_carro <- 12  # km/l
+litros_moto <- distancia / km_por_litro_moto  
+litros_carro <- distancia / km_por_litro_carro  
+consumo_moto <- litros_moto * 5.90  
+consumo_carro <- litros_carro * 5.90  
+economia <- consumo_carro - consumo_moto  
+
+# gráfico de barras comparando o gasto em carro e em moto
+
+graf7 <- ggplot(data = data.frame(
+  Tipo = c("Moto", "Carro"),
+  Gasto = c(consumo_moto, consumo_carro)
+), aes(x = Tipo, y = Gasto, fill = Tipo)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("Moto" = "lightgreen", "Carro" = "lightgray")) +
+  geom_text(aes(label = paste0("R$ ", round(Gasto, 2))), vjust = -0.5) +
+  labs(title = "", x = "", y = "") +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.x = element_blank(),
+    legend.position = "none"
+  )
+graf7
+ggsave(
+  filename = "gasto_moto_carro.jpg",
+  plot = graf7,
+  width = 12,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
