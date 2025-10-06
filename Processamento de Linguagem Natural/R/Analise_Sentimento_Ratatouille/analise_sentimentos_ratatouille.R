@@ -7,7 +7,7 @@ library(wordcloud)
 library(ggplot2)
 library(tidyr)
 library(textdata)
-
+setwd("C:/Users/bielm/OneDrive/Documents/GitHub/PET/Processamento de Linguagem Natural/R/Analise_Sentimento_Ratatouille")
 ratatouille_pages <- pdf_text("pdf_ratatouille.pdf")
 
 
@@ -94,8 +94,15 @@ contagem_polaridade %>%
     x = "Polaridade",
     y = "Contagem de Palavras"
   ) +
-  scale_fill_manual(values = c("negative" = "tomato", "positive" = "forestgreen")) +
-  theme_minimal()
+  scale_fill_manual(values = c("negative" = "lightcoral", "positive" = "lightgreen")) +
+  theme_minimal()+
+  theme(
+    legend.position = "none",
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  )
 
 
 ratatouille_frequencias_polaridade <- ratatouille_sentimento %>%
@@ -111,8 +118,10 @@ wordcloud(
   words = dados_positivos$word,
   freq = dados_positivos$n,      
   max.words = 15,
-  colors = "green"
+  colors = brewer.pal(8, "Blues"),
+  main = "Positivas"
 )
+title(main = "Nuvem de Palavras Positivas")
 
 
 #Nuvem de Palavras NEGATIVAS
@@ -125,7 +134,7 @@ wordcloud(
   max.words = 15,
   colors = brewer.pal(8, "Reds")
 )
-
+title(main = "Nuvem de Palavras Negativas")
 par(mfrow = c(1, 1))
 
 
@@ -135,7 +144,8 @@ nrc_sentimento <- get_sentiments("nrc")
 ratatouille_emocoes <- ratatouille_tokens_limpo %>%
   inner_join(nrc_sentimento, by = "word") %>%
   # O léxico NSS também inclui 'positive' e 'negative'
-  filter(!sentiment %in% c("positive", "negative"))
+  filter(!sentiment %in% c("positive", "negative"))%>%
+  filter(!word %in% c("rat","food"))
 
 head(ratatouille_emocoes)
 
@@ -155,19 +165,37 @@ contagem_emocoes %>%
   theme_minimal() +
   theme(legend.position = "none") 
 
+# Nuvem de palavras por emoção
+table(ratatouille_emocoes$sentiment)
+
+par(mfrow = c(2, 4))
+emocoes <- unique(ratatouille_emocoes$sentiment)
+
+for (emocao in emocoes) {
+  dados_emocao <- ratatouille_emocoes %>%
+    filter(sentiment == emocao) %>%
+    count(word, sort = TRUE)
+  wordcloud(
+    words = dados_emocao$word,
+    freq = dados_emocao$n,
+    max.words = 10,
+    colors = "black"
+  )
+  title(emocao)
+}
+
+
 
 # análise de emoção ao longo do filme
 ratatouille_timed_tokens <- tibble(text = ratatouille_limpo) %>%
   unnest_tokens(word, text) %>%
   mutate(word_number = row_number())
 
-num_capitulos <- 50
+num_capitulos <- 25
 
 ratatouille_por_momento <- ratatouille_timed_tokens %>%
   mutate(chapter = ceiling(word_number / (n() / num_capitulos))) %>%
   anti_join(stop_words, by = "word")
-
-bing_sentiment <- get_sentiments("bing")
 
 ratatouille_sentimento_tempo <- ratatouille_por_momento %>%
   inner_join(bing_sentiment, by = "word") %>%
@@ -184,10 +212,40 @@ ratatouille_sentimento_tempo %>%
   geom_col(show.legend = FALSE) +
   labs(
     title = "Arco Emocional do Roteiro de Ratatouille",
-    subtitle = "Variação de Sentimento (Positivo - Negativo) ao Longo de 50 Momentos",
-    x = "Momento no Filme (Capítulo de 1 a 50)",
+    subtitle = "Variação de Sentimento (Positivo - Negativo) ao Longo de 25 Momentos",
     y = "Pontuação de Sentimento Líquida (Positivo - Negativo)"
   ) +
   scale_fill_manual(values = c("TRUE" = "cornflowerblue", "FALSE" = "indianred")) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_blank()
+  )
 
+# análise de emoção ao longo do filme - léxico NSS
+
+ratatouille_nss_tempo <- ratatouille_por_momento %>%
+  inner_join(nrc_sentimento, by = "word") %>%
+  filter(!sentiment %in% c("positive", "negative")) %>%
+  count(chapter, sentiment)
+
+# tendências emocionais ao longo do filme
+ratatouille_nss_tempo %>%
+  ggplot(aes(x = chapter, y = n, color = sentiment)) +
+  geom_line(size = 1) +
+  facet_wrap(~ sentiment) + 
+  labs(
+    title = "Evolução das Emoções no Roteiro de Ratatouille",
+    subtitle = "Frequência de cada emoção ao longo de 25 Momentos",
+    x = "Momento no Filme (Capítulo)",
+    y = "Contagem de Palavras com a Emoção"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank()
+    ) 
